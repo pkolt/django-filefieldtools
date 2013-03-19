@@ -1,2 +1,2 @@
-from .test_tools import *
-from .test_models import *
+from tests.app.tests.test_tools import *
+from tests.app.tests.test_models import *

@@ -1,15 +1,16 @@
 # -*- coding: utf-8 -*-
-import os
 import shutil
 
-from django.utils import unittest
+import os
+
+from django.test import TestCase
 from django.conf import settings
 from django.core.files.base import ContentFile
 
 from tests.app.models import Phone1, Phone2
 
 
-class TestModels(unittest.TestCase):
+class TestModels(TestCase):
     def setUp(self):
         self.upload_path = os.path.join(settings.MEDIA_ROOT, 'uploads')
         if os.path.exists(self.upload_path):

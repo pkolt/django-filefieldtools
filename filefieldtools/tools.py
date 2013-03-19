@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 import os
 import re
-import trans
 import time
 import datetime
 import hashlib
+import trans
 
 from django.conf import settings
 from django.utils.encoding import smart_str, smart_unicode
 
-from filefieldtools import configuration
+from filefieldtools import settings as app_settings
 
 
 def translate_filename(filename):
@@ -20,7 +20,7 @@ def translate_filename(filename):
 
 
 def clean_filename(filename):
-    whitespace = configuration.FILEFIELDTOOLS_WHITESPACE
+    whitespace = app_settings.FILEFIELDTOOLS_WHITESPACE
     filename = translate_filename(filename)
     name, ext = os.path.splitext(filename)
     name = re.sub(r'\W|_', ' ', name)
@@ -48,7 +48,7 @@ def control_length(filepath, max_length):
         name, ext = os.path.splitext(filename)
         number = len(filepath) - max_length
         if len(name) - number >= 1:
-            whitespace = configuration.FILEFIELDTOOLS_WHITESPACE
+            whitespace = app_settings.FILEFIELDTOOLS_WHITESPACE
             name = name[:len(name) - number]
             name = name.strip(whitespace)
             return os.path.join(path, ''.join([name, ext]))
@@ -59,7 +59,7 @@ def _upload_to(instance, filename,
                path=None, to_hash=False,
                to_lower=True, field_name=None):
     
-    upload_dir = configuration.FILEFIELDTOOLS_DIR
+    upload_dir = app_settings.FILEFIELDTOOLS_DIR
     upload_dir = upload_dir.strip(os.pathsep)
 
     if path is None:

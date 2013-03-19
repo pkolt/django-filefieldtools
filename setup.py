@@ -1,10 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from setuptools import setup, find_packages
+import os
+from distutils.core import setup
 
 
+base_dir = os.path.dirname(__file__)
 files = ['README.rst', 'CHANGELOG.rst', 'AUTHORS.rst']
-long_description = '\n\n'.join(map(lambda fn: open(fn).read(), files))
+long_description = '\n\n'.join(map(lambda fn: open(os.path.join(base_dir, fn)).read(), files))
+
 
 setup(
     name="django-filefieldtools",
@@ -15,13 +18,7 @@ setup(
     url="https://github.com/pkolt/django-filefieldtools",
     long_description=long_description,
     license="BSD",
-    zip_safe=False,
-    packages=find_packages(),
-    include_package_data=True,
-    install_requires=[
-        "django>=1.4,<1.5",
-        "trans>=1.5"
-    ],
+    packages=['filefieldtools'],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
