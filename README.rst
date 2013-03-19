@@ -14,7 +14,7 @@ filefieldtools - утилита для загрузки файлов в поля
 ===========
 
 * Python >= 2.6, <3.0
-* Django <= 1.5
+* Django >= 1.4
 * trans >= 1.5 (http://pypi.python.org/pypi/trans/1.5.1)
 
 
