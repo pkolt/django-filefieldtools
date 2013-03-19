@@ -111,5 +111,5 @@ myapp/models.py ::
 
 Запуск тестов ::
 
-    python runtests.py
+    tox
 
