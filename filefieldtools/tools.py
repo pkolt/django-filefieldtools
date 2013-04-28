@@ -6,8 +6,10 @@ import datetime
 import hashlib
 import trans
 
+
 from django.conf import settings
 from django.utils.encoding import smart_str, smart_unicode
+from django.utils import timezone
 
 from filefieldtools import settings as app_settings
 
@@ -66,6 +68,9 @@ def _upload_to(instance, filename,
         path = upload_dir
     else:
         path = os.path.join(upload_dir, path)
+        if '%' in path:
+            dt = timezone.now()
+            path = dt.strftime(path)
 
     if to_hash:
         filename = rename_to_hash(filename)

@@ -45,8 +45,25 @@ myapp/models.py ::
         picture = models.ImageField(upload_to=upload_to('books/pictures'))
 
 
+Загрузка файлов в каталог по текущей дате
+=========================================
+
+myapp/models.py ::
+
+    from django.db import models
+    from filefieldtools import upload_to
+
+    class Book(models.Model):
+        title = models.CharField(max_length=200)
+
+        # uploads/books/pictures/2012/04/27/<filename>
+        picture = models.ImageField(upload_to=upload_to('books/%Y/%m/%d'))
+
+
 Приводит имя файла к нижнему регистру
 =====================================
+
+По умолчанию имя файла приводится к нижнему регистру.
 
 myapp/models.py ::
 

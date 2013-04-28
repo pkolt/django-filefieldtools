@@ -11,7 +11,7 @@ long_description = '\n\n'.join(map(lambda fn: open(os.path.join(base_dir, fn)).r
 
 setup(
     name="django-filefieldtools",
-    version='1.0.2',
+    version='1.0.3',
     description="Utilities upload files to model field",
     author="Pavel Koltyshev",
     author_email="pkoltyshev@gmail.com",

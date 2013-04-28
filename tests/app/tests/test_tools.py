@@ -37,6 +37,12 @@ class TestTools(unittest.TestCase):
         self.assertTrue(value.startswith('uploads/books/authors/'))
         self.assertTrue(value.endswith('.jpg'))
 
+        value = upload_to('books/%Y/%m/%d')(None, 'Picture.JPG')
+        year, month, day = value.split('/')[2:5]
+        self.assertTrue(year.isdigit())
+        self.assertTrue(month.isdigit())
+        self.assertTrue(day.isdigit())
+
     def test_control_length(self):
         # lenght = 49
         value = control_length('uploads/books/authors/client_prices_abcdefghi.xls', 50)
