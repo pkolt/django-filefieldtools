@@ -56,7 +56,7 @@ myapp/models.py ::
     class Book(models.Model):
         title = models.CharField(max_length=200)
 
-        # uploads/books/pictures/2012/04/27/<filename>
+        # uploads/books/2012/04/27/<filename>
         picture = models.ImageField(upload_to=upload_to('books/%Y/%m/%d'))
 
 
